@@ -11,6 +11,6 @@ removeLing :: [[Char]] -> [[Char]]
 removeLing (fst : snd : pys)
     | fst == "Ling" && (snd `elem` ["Ling","","Wan","Yi"]) = removeLing (snd : pys)
     | otherwise = fst : (removeLing (snd : pys))
-removeLing (last : pys) = filter (/="") [last]
+removeLing (last : empty) = filter (/="") [last]
 
 pinyinFromNumber num = removeLing (take (length num) (pinyinFromNumberMain num))
