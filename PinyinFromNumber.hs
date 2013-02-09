@@ -2,8 +2,8 @@ import Data.Char
 
 pinyinFromNumberMain :: [Char] -> [[Char]]
 pinyinFromNumberMain (digit : digits)
-    | digit == '0' = (if unitPinyin `elem` ["","Wan","Yi"] then unitPinyin else digitPinyin) : pinyinFromNumber digits
-    | otherwise    = (digitPinyin ++ unitPinyin) : pinyinFromNumber digits
+    | digit == '0' = (if unitPinyin `elem` ["","Wan","Yi"] then unitPinyin else digitPinyin) : pinyinFromNumberMain digits
+    | otherwise    = (digitPinyin ++ unitPinyin) : pinyinFromNumberMain digits
     where digitPinyin = ["Ling","Yi","Er","San","Si","Wu","Liu","Qi","Ba","Jiu"] !! (digitToInt digit)
           unitPinyin  = ["","Shi","Bai","Qian","Wan","Shi","Bai","Qian","Yi"] !! (length digits)
 
